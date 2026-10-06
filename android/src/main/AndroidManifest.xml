@@ -3,6 +3,13 @@
     <application
         android:requestLegacyExternalStorage="true"
         ></application>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- API <= 32: MediaStore-based detection. -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <!-- API 33: MediaStore-based detection (runtime permission, request it from the app). -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <!-- API >= 34: Activity.registerScreenCaptureCallback (install-time permission). -->
+    <uses-permission android:name="android.permission.DETECT_SCREEN_CAPTURE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 </manifest>

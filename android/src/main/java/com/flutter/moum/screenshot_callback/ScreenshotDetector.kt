@@ -60,7 +60,7 @@ class ScreenshotDetector(private val context: Context,
             val dataColumn = cursor.getColumnIndex(MediaStore.Images.Media.DATA)
 
             while (cursor.moveToNext()) {
-                val path = cursor.getString(dataColumn)
+                val path = cursor.getString(dataColumn) ?: continue
                 if (path.contains("screenshot", true)) {
                     screenshots.add(path)
                 }
@@ -89,10 +89,10 @@ class ScreenshotDetector(private val context: Context,
             val displayNameColumn =
                     cursor.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME)
             while (cursor.moveToNext()) {
-                val name = cursor.getString(displayNameColumn)
+                val name = cursor.getString(displayNameColumn) ?: continue
                 val relativePath = cursor.getString(relativePathColumn)
-                if (name.contains("screenshot", true) or
-                        relativePath.contains("screenshot", true)
+                if (name.contains("screenshot", true) ||
+                        relativePath?.contains("screenshot", true) == true
                 ) {
                     screenshots.add(name)
                 }

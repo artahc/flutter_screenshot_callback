@@ -30,7 +30,7 @@ android {
         namespace 'com.flutter.moum.screenshot_callback'
     }
 
-    compileSdkVersion 33
+    compileSdkVersion 34
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
